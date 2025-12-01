@@ -10,11 +10,11 @@ import { audioService } from './services/audioService';
 import { storageService } from './services/storageService';
 
 // Icons
-const IconClock = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
-const IconStar = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>;
-const IconMusic = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>;
-const IconGrid = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>;
-const IconTrophy = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>;
+const IconClock = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
+const IconStar = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>;
+const IconMusic = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>;
+const IconGrid = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>;
+const IconTrophy = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>;
 
 function App() {
   // State
@@ -170,50 +170,83 @@ function App() {
   // ---- Rendering ----
 
   const renderMenu = () => (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-indigo-50 to-white">
-      <div className="mb-8 p-6 bg-white rounded-3xl shadow-xl border border-indigo-100 text-center max-w-lg w-full">
-        <div className="flex justify-center mb-4 text-indigo-600">
-          <IconMusic />
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-950 text-white relative overflow-hidden">
+        {/* Background blobs for aesthetics */}
+        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="z-10 w-full max-w-2xl flex flex-col items-center text-center">
+        
+        <div className="mb-12">
+            <div className="inline-flex items-center justify-center p-4 bg-slate-900 rounded-2xl shadow-2xl mb-6 ring-1 ring-slate-800">
+                <IconMusic className="w-12 h-12 text-indigo-400" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-indigo-300 mb-4 tracking-tight">
+                Melody Master
+            </h1>
+            <p className="text-slate-400 text-lg max-w-md mx-auto">
+                Master the treble clef with Thai & English notes.
+            </p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-2 tracking-tight">Melody Master</h1>
-        <p className="text-slate-500 mb-8">Learn to read music with Thai & English notes!</p>
 
-        <div className="space-y-3">
-          <button 
-            onClick={() => startGame(GameMode.PRACTICE)}
-            className="w-full py-3 px-5 bg-white border-2 border-indigo-100 hover:border-indigo-500 text-indigo-900 rounded-xl font-bold text-lg transition-all hover:shadow-md flex items-center justify-center gap-3"
-          >
-            <span>🌱</span> Practice <span className="hidden sm:inline text-xs font-normal text-gray-400 uppercase tracking-widest ml-auto">Chill</span>
-          </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
+            {/* Practice */}
+            <button 
+                onClick={() => startGame(GameMode.PRACTICE)}
+                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1"
+            >
+                <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">🌱</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-100 mb-1">Practice</h3>
+                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-indigo-400 transition-colors">Unlimited</span>
+            </button>
 
-          <button 
-            onClick={() => startGame(GameMode.TIMED)}
-            className="w-full py-3 px-5 bg-white border-2 border-orange-100 hover:border-orange-500 text-orange-900 rounded-xl font-bold text-lg transition-all hover:shadow-md flex items-center justify-center gap-3"
-          >
-            <IconClock /> Time Attack <span className="hidden sm:inline text-xs font-normal text-gray-400 uppercase tracking-widest ml-auto">60s</span>
-          </button>
-          
-          <button 
-            onClick={() => startGame(GameMode.MATCHING)}
-            className="w-full py-3 px-5 bg-white border-2 border-pink-100 hover:border-pink-500 text-pink-900 rounded-xl font-bold text-lg transition-all hover:shadow-md flex items-center justify-center gap-3"
-          >
-            <IconGrid /> Matching <span className="hidden sm:inline text-xs font-normal text-gray-400 uppercase tracking-widest ml-auto">Memory</span>
-          </button>
+            {/* Time Attack */}
+            <button 
+                onClick={() => startGame(GameMode.TIMED)}
+                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-orange-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1"
+            >
+                <div className="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-4 group-hover:scale-110 transition-transform">
+                     <IconClock className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-100 mb-1">Time Attack</h3>
+                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-orange-400 transition-colors">60 Seconds</span>
+            </button>
 
-          <button 
-            onClick={() => startGame(GameMode.LEVELS)}
-            className="w-full py-3 px-5 bg-indigo-600 text-white rounded-xl font-bold text-lg transition-all hover:bg-indigo-700 shadow-lg shadow-indigo-200 flex items-center justify-center gap-3"
-          >
-            <span>🏆</span> Level Mode <span className="hidden sm:inline text-xs font-normal text-indigo-200 uppercase tracking-widest ml-auto">Progress</span>
-          </button>
+            {/* Matching */}
+            <button 
+                onClick={() => startGame(GameMode.MATCHING)}
+                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-pink-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 hover:-translate-y-1"
+            >
+                <div className="w-12 h-12 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-400 mb-4 group-hover:scale-110 transition-transform">
+                     <IconGrid className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-100 mb-1">Matching</h3>
+                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-pink-400 transition-colors">Memory Game</span>
+            </button>
 
-          <button 
+            {/* Levels */}
+            <button 
+                onClick={() => startGame(GameMode.LEVELS)}
+                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1"
+            >
+                <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
+                     <span className="text-2xl">🏆</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-100 mb-1">Level Mode</h3>
+                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-emerald-400 transition-colors">Progression</span>
+            </button>
+        </div>
+
+        <button 
             onClick={() => setMode(GameMode.LEADERBOARD)}
-            className="w-full py-3 px-5 mt-4 text-indigo-600 font-semibold hover:bg-indigo-50 rounded-xl transition-colors flex items-center justify-center gap-2"
-          >
-            <IconTrophy /> Hall of Fame
-          </button>
-        </div>
+            className="flex items-center gap-2 px-6 py-3 text-slate-400 hover:text-white hover:bg-slate-900 rounded-full transition-all text-sm font-semibold tracking-wide"
+        >
+            <IconTrophy className="w-4 h-4" />
+            VIEW HALL OF FAME
+        </button>
+
       </div>
     </div>
   );
@@ -234,12 +267,12 @@ function App() {
         
         <div className="flex gap-4 sm:gap-6 font-bold text-xl">
             <div className="flex items-center gap-2 bg-white px-4 py-1 rounded-full shadow-sm border border-slate-100">
-                <IconStar />
+                <IconStar className="w-5 h-5 text-yellow-400" />
                 <span className={feedback === 'correct' ? 'text-green-600 animate-pulse' : ''}>{score}</span>
             </div>
             {mode === GameMode.TIMED && (
                  <div className={`flex items-center gap-2 bg-white px-4 py-1 rounded-full shadow-sm border border-slate-100 ${timeLeft < 10 ? 'text-red-500' : ''}`}>
-                    <IconClock />
+                    <IconClock className="w-5 h-5" />
                     <span>{timeLeft}s</span>
                 </div>
             )}

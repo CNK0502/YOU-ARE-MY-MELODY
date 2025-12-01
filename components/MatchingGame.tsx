@@ -132,8 +132,9 @@ export const MatchingGame: React.FC<MatchingGameProps> = ({ onGameOver, onScoreU
       const allMatched = cards.every(c => c.matchId === noteName || c.isMatched);
       if (allMatched) {
         // Bonus for clearing board
-        setScore(s => s + 50);
-        onScoreUpdate(s => s + 50);
+        const finalScore = newScore + 50;
+        setScore(finalScore);
+        onScoreUpdate(finalScore);
         audioService.playTone(880, 'triangle', 0.3);
         setTimeout(startRound, 500); // Start next round
       }
