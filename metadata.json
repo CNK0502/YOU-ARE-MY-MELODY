@@ -1,0 +1,5 @@
+{
+  "name": "Melody Master",
+  "description": "A beautiful, interactive music note reading game to help you learn the treble clef. Features practice, timed, and level-based modes.",
+  "requestFramePermissions": []
+}
