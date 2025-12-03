@@ -170,78 +170,91 @@ function App() {
   // ---- Rendering ----
 
   const renderMenu = () => (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-950 text-white relative overflow-hidden">
-        {/* Background blobs for aesthetics */}
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#020617] text-white relative overflow-hidden">
+        
+        {/* Night Sky Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#020617] to-[#020617]" />
+        
+        {/* Stars */}
+        <div className="absolute top-10 left-10 w-1 h-1 bg-white rounded-full opacity-70 animate-pulse" />
+        <div className="absolute top-1/4 left-1/3 w-0.5 h-0.5 bg-blue-100 rounded-full opacity-60" />
+        <div className="absolute top-20 right-20 w-1 h-1 bg-white rounded-full opacity-50" />
+        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-white rounded-full opacity-60 animate-pulse" />
+        <div className="absolute top-1/3 right-10 w-0.5 h-0.5 bg-purple-100 rounded-full opacity-80" />
+        <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-white rounded-full opacity-40" />
+
+        {/* Nebulas/Glows */}
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-3xl pointer-events-none mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-3xl pointer-events-none mix-blend-screen" />
 
       <div className="z-10 w-full max-w-2xl flex flex-col items-center text-center">
         
         <div className="mb-12">
-            <div className="inline-flex items-center justify-center p-4 bg-slate-900 rounded-2xl shadow-2xl mb-6 ring-1 ring-slate-800">
-                <IconMusic className="w-12 h-12 text-indigo-400" />
+            <div className="inline-flex items-center justify-center p-4 bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl mb-6 ring-1 ring-white/10">
+                <IconMusic className="w-12 h-12 text-indigo-300" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-indigo-300 mb-4 tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-white to-indigo-200 mb-4 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                 Melody Master
             </h1>
-            <p className="text-slate-400 text-lg max-w-md mx-auto">
+            <p className="text-indigo-200/80 text-lg max-w-md mx-auto">
                 Master the treble clef with Thai & English notes.
             </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
-            {/* Practice */}
+            {/* Practice - Bright Sky/Blue */}
             <button 
                 onClick={() => startGame(GameMode.PRACTICE)}
-                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1"
+                className="group relative flex flex-col items-center p-6 bg-gradient-to-br from-sky-400 to-blue-600 hover:from-sky-300 hover:to-blue-500 rounded-3xl transition-all duration-300 shadow-lg hover:shadow-sky-500/30 hover:-translate-y-1"
             >
-                <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
-                    <span className="text-2xl">🌱</span>
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform shadow-inner">
+                    {/* Changed Emoji to Star */}
+                    <span className="text-2xl">⭐</span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-100 mb-1">Practice</h3>
-                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-indigo-400 transition-colors">Unlimited</span>
+                <h3 className="text-xl font-bold text-white mb-1">Practice</h3>
+                <span className="text-xs font-medium text-sky-100 uppercase tracking-wider group-hover:text-white transition-colors">Unlimited</span>
             </button>
 
-            {/* Time Attack */}
+            {/* Time Attack - Bright Cyan/Teal */}
             <button 
                 onClick={() => startGame(GameMode.TIMED)}
-                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-orange-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1"
+                className="group relative flex flex-col items-center p-6 bg-gradient-to-br from-cyan-400 to-teal-600 hover:from-cyan-300 hover:to-teal-500 rounded-3xl transition-all duration-300 shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-1"
             >
-                <div className="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform shadow-inner">
                      <IconClock className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-100 mb-1">Time Attack</h3>
-                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-orange-400 transition-colors">60 Seconds</span>
+                <h3 className="text-xl font-bold text-white mb-1">Time Attack</h3>
+                <span className="text-xs font-medium text-cyan-100 uppercase tracking-wider group-hover:text-white transition-colors">60 Seconds</span>
             </button>
 
-            {/* Matching */}
+            {/* Matching - Bright Indigo/Blue */}
             <button 
                 onClick={() => startGame(GameMode.MATCHING)}
-                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-pink-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 hover:-translate-y-1"
+                className="group relative flex flex-col items-center p-6 bg-gradient-to-br from-indigo-400 to-blue-600 hover:from-indigo-300 hover:to-blue-500 rounded-3xl transition-all duration-300 shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1"
             >
-                <div className="w-12 h-12 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-400 mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform shadow-inner">
                      <IconGrid className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-100 mb-1">Matching</h3>
-                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-pink-400 transition-colors">Memory Game</span>
+                <h3 className="text-xl font-bold text-white mb-1">Matching</h3>
+                <span className="text-xs font-medium text-indigo-100 uppercase tracking-wider group-hover:text-white transition-colors">Memory Game</span>
             </button>
 
-            {/* Levels */}
+            {/* Levels - Bright Teal/Blue */}
             <button 
                 onClick={() => startGame(GameMode.LEVELS)}
-                className="group relative flex flex-col items-center p-6 bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1"
+                className="group relative flex flex-col items-center p-6 bg-gradient-to-br from-blue-400 to-sky-600 hover:from-blue-300 hover:to-sky-500 rounded-3xl transition-all duration-300 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1"
             >
-                <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform shadow-inner">
                      <span className="text-2xl">🏆</span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-100 mb-1">Level Mode</h3>
-                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider group-hover:text-emerald-400 transition-colors">Progression</span>
+                <h3 className="text-xl font-bold text-white mb-1">Level Mode</h3>
+                <span className="text-xs font-medium text-blue-100 uppercase tracking-wider group-hover:text-white transition-colors">Progression</span>
             </button>
         </div>
 
         <button 
             onClick={() => setMode(GameMode.LEADERBOARD)}
-            className="flex items-center gap-2 px-6 py-3 text-slate-400 hover:text-white hover:bg-slate-900 rounded-full transition-all text-sm font-semibold tracking-wide"
+            className="flex items-center gap-2 px-6 py-3 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-all text-sm font-semibold tracking-wide border border-transparent hover:border-white/10"
         >
             <IconTrophy className="w-4 h-4" />
             VIEW HALL OF FAME
